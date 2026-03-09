@@ -179,7 +179,9 @@ def:pub Home() -> JsxElement {
 
         try {
             target_error = explain_target.strip();
-            spawn_result = root spawn explain_code_error(error_message=target_error);
+            spawn_result = await root spawn explain_code_error(
+                error_message=target_error
+            );
             payload = get_first_report(spawn_result);
             response = payload;
 
@@ -201,35 +203,146 @@ def:pub Home() -> JsxElement {
     }
 
     return
-        <div className="min-h-screen bg-white text-slate-900">
-            <div className="mx-auto max-w-7xl px-6 py-8">
-                <header className="mb-8">
+        <div className="min-h-screen bg-[#0b0b0d] text-zinc-100">
+            <div
+                className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,122,24,0.12),_transparent_28%),linear-gradient(to_bottom,_rgba(255,255,255,0.02),_transparent_35%)]"
+            />
+            <div
+                className="relative mx-auto max-w-7xl px-4 py-5 sm:px-6 sm:py-6 lg:px-8"
+            >
+                <header
+                    className="mb-6 rounded-3xl border border-white/10 bg-[#111214]/90 shadow-[0_20px_80px_rgba(0,0,0,0.45)] backdrop-blur"
+                >
                     <div
-                        className="mb-2 inline-flex rounded-full border px-3 py-1 text-sm"
+                        className="flex flex-col gap-4 px-5 py-5 sm:px-6 lg:flex-row lg:items-end lg:justify-between"
                     >
-                        Jac MCP Playground
-                    </div>
-                    <h1 className="text-3xl font-semibold tracking-tight">
-                        Validate, format, and explain Jac code
-                    </h1>
-                    <p className="mt-2 max-w-3xl text-sm text-slate-600">
-                        A focused internal tool for exercising Jac compiler workflows through backend walkers.
-                    </p>
-                </header>
-                <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-                    <section className="rounded-2xl border bg-white p-4 shadow-sm">
-                        <div className="mb-4 flex items-center justify-between gap-3">
+                        <div className="space-y-3">
+                            <div
+                                className="inline-flex items-center gap-2 rounded-full border border-orange-400/25 bg-orange-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-orange-300"
+                            >
+                                <span
+                                    className="h-2 w-2 rounded-full bg-orange-400 shadow-[0_0_12px_rgba(251,146,60,0.9)]"
+                                />
+                                Jac MCP Playground
+                            </div>
                             <div>
-                                <h2 className="text-lg font-medium">
-                                    Editor
-                                </h2>
-                                <p className="text-sm text-slate-600">
-                                    Keep the code sample small while the MCP integration is being proven.
+                                <h1
+                                    className="text-2xl font-semibold tracking-tight text-white sm:text-3xl"
+                                >
+                                    Jac compiler workflow, in one place
+                                </h1>
+                                <p
+                                    className="mt-2 max-w-3xl text-sm leading-6 text-zinc-400"
+                                >
+                                    Write code, validate behavior, format output, and inspect error responses through backend walkers.
                                 </p>
                             </div>
-                            <div className="flex flex-wrap gap-2">
+                        </div>
+                        <div className="grid grid-cols-2 gap-3 lg:min-w-[320px]">
+                            <div
+                                className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3"
+                            >
+                                <div
+                                    className="text-[11px] uppercase tracking-[0.18em] text-zinc-500"
+                                >
+                                    Mode
+                                </div>
+                                <div className="mt-1 text-sm font-medium text-zinc-100">
+                                    Developer playground
+                                </div>
+                            </div>
+                            <div
+                                className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3"
+                            >
+                                <div
+                                    className="text-[11px] uppercase tracking-[0.18em] text-zinc-500"
+                                >
+                                    Backend
+                                </div>
+                                <div className="mt-1 text-sm font-medium text-zinc-100">
+                                    Jac walkers
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <div className="mb-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+                    <div
+                        className="rounded-2xl border border-orange-400/20 bg-orange-500/10 px-4 py-3"
+                    >
+                        <div
+                            className="text-[11px] uppercase tracking-[0.18em] text-orange-300"
+                        >
+                            Step 1
+                        </div>
+                        <div className="mt-1 text-sm font-semibold text-white">
+                            Write Jac code
+                        </div>
+                    </div>
+                    <div
+                        className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3"
+                    >
+                        <div
+                            className="text-[11px] uppercase tracking-[0.18em] text-zinc-500"
+                        >
+                            Step 2
+                        </div>
+                        <div className="mt-1 text-sm font-semibold text-white">
+                            Validate structure
+                        </div>
+                    </div>
+                    <div
+                        className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3"
+                    >
+                        <div
+                            className="text-[11px] uppercase tracking-[0.18em] text-zinc-500"
+                        >
+                            Step 3
+                        </div>
+                        <div className="mt-1 text-sm font-semibold text-white">
+                            Format output
+                        </div>
+                    </div>
+                    <div
+                        className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3"
+                    >
+                        <div
+                            className="text-[11px] uppercase tracking-[0.18em] text-zinc-500"
+                        >
+                            Step 4
+                        </div>
+                        <div className="mt-1 text-sm font-semibold text-white">
+                            Explain errors
+                        </div>
+                    </div>
+                </div>
+                <div className="grid gap-6 xl:grid-cols-[1.35fr_0.65fr]">
+                    <section
+                        className="rounded-3xl border border-white/10 bg-[#121316]/92 p-4 shadow-[0_20px_70px_rgba(0,0,0,0.35)] sm:p-5"
+                    >
+                        <div className="mb-4 flex flex-col gap-4">
+                            <div
+                                className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between"
+                            >
+                                <div>
+                                    <h2 className="text-lg font-semibold text-white">
+                                        Code workspace
+                                    </h2>
+                                    <p className="mt-1 text-sm leading-6 text-zinc-400">
+                                        Edit a Jac snippet, then run a compiler action from the toolbar.
+                                    </p>
+                                </div>
+                                <div
+                                    className="inline-flex w-fit items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-zinc-400"
+                                >
+                                    Ready for validation and formatting
+                                </div>
+                            </div>
+                            <div
+                                className="flex flex-wrap gap-2 rounded-2xl border border-white/10 bg-[#0d0e10] p-2"
+                            >
                                 <button
-                                    className="rounded-xl border px-4 py-2 text-sm font-medium"
+                                    className="rounded-xl border border-orange-400/25 bg-orange-500 px-4 py-2 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(249,115,22,0.25)] transition hover:bg-orange-400 disabled:cursor-not-allowed disabled:border-white/10 disabled:bg-white/5 disabled:text-zinc-500 disabled:shadow-none"
                                     disabled={loading}
                                     onClick={lambda -> None { run_validate();}}
                                 >
@@ -241,7 +354,7 @@ def:pub Home() -> JsxElement {
                                     and "Validate"}
                                 </button>
                                 <button
-                                    className="rounded-xl border px-4 py-2 text-sm font-medium"
+                                    className="rounded-xl border border-white/12 bg-white/5 px-4 py-2 text-sm font-semibold text-zinc-100 transition hover:border-orange-400/30 hover:bg-white/10 disabled:cursor-not-allowed disabled:border-white/8 disabled:bg-white/5 disabled:text-zinc-500"
                                     disabled={loading}
                                     onClick={lambda -> None { run_format();}}
                                 >
@@ -253,7 +366,7 @@ def:pub Home() -> JsxElement {
                                     and "Format"}
                                 </button>
                                 <button
-                                    className="rounded-xl border px-4 py-2 text-sm font-medium"
+                                    className="rounded-xl border border-white/12 bg-white/5 px-4 py-2 text-sm font-semibold text-zinc-100 transition hover:border-orange-400/30 hover:bg-white/10 disabled:cursor-not-allowed disabled:border-white/8 disabled:bg-white/5 disabled:text-zinc-500"
                                     disabled={loading or explain_target.strip() == ""}
                                     onClick={lambda -> None { run_explain();}}
                                 >
@@ -266,65 +379,139 @@ def:pub Home() -> JsxElement {
                                 </button>
                             </div>
                         </div>
-                        <textarea
-                            className="min-h-[460px] w-full rounded-2xl border p-4 font-mono text-sm outline-none"
-                            value={code}
-                            onChange={lambda e: any  -> None { code = e.target.value;}}
-                            spellCheck={False}
-                        />
-                        <div className="mt-4 rounded-2xl border px-4 py-3">
+                        <div
+                            className="overflow-hidden rounded-2xl border border-white/10 bg-[#0d0e10] shadow-inner"
+                        >
                             <div
-                                className="text-xs font-medium uppercase tracking-wide text-slate-500"
+                                className="flex items-center justify-between border-b border-white/8 px-4 py-3"
                             >
-                                Status
+                                <div className="flex items-center gap-2">
+                                    <span
+                                        className="h-2.5 w-2.5 rounded-full bg-red-400/80"
+                                    />
+                                    <span
+                                        className="h-2.5 w-2.5 rounded-full bg-yellow-400/80"
+                                    />
+                                    <span
+                                        className="h-2.5 w-2.5 rounded-full bg-green-400/80"
+                                    />
+                                </div>
+                                <div
+                                    className="text-xs font-medium uppercase tracking-[0.18em] text-zinc-500"
+                                >
+                                    jac editor
+                                </div>
                             </div>
-                            <p className="mt-1 text-sm">
+                            <textarea
+                                className="min-h-[540px] w-full resize-none bg-transparent p-4 font-mono text-sm leading-7 text-zinc-100 outline-none placeholder:text-zinc-500"
+                                value={code}
+                                onChange={lambda e: any  -> None { code = e.target.value;}}
+                                spellCheck={False}
+                            />
+                        </div>
+                        <div
+                            className="mt-4 rounded-2xl border border-white/10 bg-white/5 px-4 py-4"
+                        >
+                            <div className="flex items-center justify-between gap-3">
+                                <div
+                                    className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500"
+                                >
+                                    Run status
+                                </div>
+                                <div className="text-xs text-zinc-400">
+                                    {loading and "Processing..."}{(not loading)
+                                    and "Idle"}
+                                </div>
+                            </div>
+                            <p className="mt-2 text-sm leading-6 text-zinc-200">
                                 {notice}
                             </p>
                             {error_text != ""
-                            and <p className="mt-2 text-sm text-red-600">
-                                {error_text}
-                            </p>}
+                            and <div
+                                className="mt-3 rounded-xl border border-red-400/20 bg-red-500/10 px-3 py-3"
+                            >
+                                <p className="text-sm leading-6 text-red-200">
+                                    {error_text}
+                                </p>
+                            </div>}
                         </div>
                     </section>
-                    <section className="space-y-6">
-                        <div className="rounded-2xl border bg-white p-4 shadow-sm">
-                            <div className="mb-3">
-                                <h2 className="text-lg font-medium">
-                                    Primary error
-                                </h2>
-                                <p className="text-sm text-slate-600">
-                                    The first validation error is captured here for quick explanation.
-                                </p>
+                    <aside className="space-y-6">
+                        <div
+                            className="rounded-3xl border border-white/10 bg-[#121316]/92 p-5 shadow-[0_20px_70px_rgba(0,0,0,0.35)]"
+                        >
+                            <div
+                                className="mb-4 flex items-center justify-between gap-3"
+                            >
+                                <div>
+                                    <div
+                                        className="text-[11px] uppercase tracking-[0.18em] text-zinc-500"
+                                    >
+                                        Inspector
+                                    </div>
+                                    <h2
+                                        className="mt-1 text-lg font-semibold text-white"
+                                    >
+                                        Primary error
+                                    </h2>
+                                </div>
+                                <div
+                                    className="rounded-full border border-orange-400/20 bg-orange-500/10 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-orange-300"
+                                >
+                                    explain target
+                                </div>
                             </div>
-                            <div className="rounded-2xl border p-4">
+                            <div
+                                className="rounded-2xl border border-white/10 bg-[#0d0e10] p-4"
+                            >
                                 {explain_target != ""
-                                and <pre className="whitespace-pre-wrap text-sm">
+                                and <pre
+                                    className="whitespace-pre-wrap font-mono text-sm leading-6 text-zinc-200"
+                                >
                                     {explain_target}
                                 </pre>}{explain_target == ""
-                                and <p className="text-sm text-slate-500">
-                                    No compiler error selected yet.
-                                </p>}
+                                and <div
+                                    className="rounded-xl border border-dashed border-white/10 bg-white/[0.03] px-4 py-6 text-sm text-zinc-500"
+                                >
+                                    Run validation to populate the first compiler error here.
+                                </div>}
                             </div>
                         </div>
-                        <div className="rounded-2xl border bg-white p-4 shadow-sm">
-                            <div className="mb-3">
-                                <h2 className="text-lg font-medium">
-                                    Backend response
-                                </h2>
-                                <p className="text-sm text-slate-600">
-                                    Raw normalized payload from your Jac backend.
-                                </p>
+                        <div
+                            className="rounded-3xl border border-white/10 bg-[#121316]/92 p-5 shadow-[0_20px_70px_rgba(0,0,0,0.35)]"
+                        >
+                            <div
+                                className="mb-4 flex items-center justify-between gap-3"
+                            >
+                                <div>
+                                    <div
+                                        className="text-[11px] uppercase tracking-[0.18em] text-zinc-500"
+                                    >
+                                        Inspector
+                                    </div>
+                                    <h2
+                                        className="mt-1 text-lg font-semibold text-white"
+                                    >
+                                        Backend response
+                                    </h2>
+                                </div>
+                                <div
+                                    className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-400"
+                                >
+                                    raw json
+                                </div>
                             </div>
-                            <div className="rounded-2xl border bg-slate-50 p-4">
+                            <div
+                                className="rounded-2xl border border-white/10 bg-[#0d0e10] p-4"
+                            >
                                 <pre
-                                    className="overflow-x-auto whitespace-pre-wrap text-xs"
+                                    className="max-h-[420px] overflow-x-auto overflow-y-auto whitespace-pre-wrap font-mono text-xs leading-6 text-zinc-300"
                                 >
                                     {pretty_json(response)}
                                 </pre>
                             </div>
                         </div>
-                    </section>
+                    </aside>
                 </div>
             </div>
         </div>;
