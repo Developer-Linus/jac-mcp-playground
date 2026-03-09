@@ -9,4 +9,5 @@ dependencies = [
     "jac-client==0.3.3",
     "jac-mcp==0.1.2",
     "jaclang==0.11.3",
+    "watchdog>=6.0.0",
 ]
