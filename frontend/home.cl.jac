@@ -229,26 +229,26 @@ def:pub Home() -> JsxElement {
                                 <h1
                                     className="text-2xl font-semibold tracking-tight text-white sm:text-3xl"
                                 >
-                                    Jac compiler workflow, in one place
+                                    Validate, format, and explain Jac code
                                 </h1>
                                 <p
                                     className="mt-2 max-w-3xl text-sm leading-6 text-zinc-400"
                                 >
-                                    Write code, validate behavior, format output, and inspect error responses through backend walkers.
+                                    A focused workspace for checking code quality, formatting snippets, and understanding errors faster.
                                 </p>
                             </div>
                         </div>
-                        <div className="grid grid-cols-2 gap-3 lg:min-w-[320px]">
+                        <div className="grid grid-cols-2 gap-3 lg:min-w-[280px]">
                             <div
                                 className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3"
                             >
                                 <div
                                     className="text-[11px] uppercase tracking-[0.18em] text-zinc-500"
                                 >
-                                    Mode
+                                    Purpose
                                 </div>
                                 <div className="mt-1 text-sm font-medium text-zinc-100">
-                                    Developer playground
+                                    Jac code workflow
                                 </div>
                             </div>
                             <div
@@ -257,26 +257,26 @@ def:pub Home() -> JsxElement {
                                 <div
                                     className="text-[11px] uppercase tracking-[0.18em] text-zinc-500"
                                 >
-                                    Backend
+                                    Actions
                                 </div>
                                 <div className="mt-1 text-sm font-medium text-zinc-100">
-                                    Jac walkers
+                                    Validate · Format · Explain
                                 </div>
                             </div>
                         </div>
                     </div>
                 </header>
-                <div className="mb-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+                <div className="mb-6 grid gap-3 sm:grid-cols-3">
                     <div
                         className="rounded-2xl border border-orange-400/20 bg-orange-500/10 px-4 py-3"
                     >
                         <div
                             className="text-[11px] uppercase tracking-[0.18em] text-orange-300"
                         >
-                            Step 1
+                            1
                         </div>
                         <div className="mt-1 text-sm font-semibold text-white">
-                            Write Jac code
+                            Paste or edit code
                         </div>
                     </div>
                     <div
@@ -285,10 +285,10 @@ def:pub Home() -> JsxElement {
                         <div
                             className="text-[11px] uppercase tracking-[0.18em] text-zinc-500"
                         >
-                            Step 2
+                            2
                         </div>
                         <div className="mt-1 text-sm font-semibold text-white">
-                            Validate structure
+                            Run a code action
                         </div>
                     </div>
                     <div
@@ -297,22 +297,10 @@ def:pub Home() -> JsxElement {
                         <div
                             className="text-[11px] uppercase tracking-[0.18em] text-zinc-500"
                         >
-                            Step 3
+                            3
                         </div>
                         <div className="mt-1 text-sm font-semibold text-white">
-                            Format output
-                        </div>
-                    </div>
-                    <div
-                        className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3"
-                    >
-                        <div
-                            className="text-[11px] uppercase tracking-[0.18em] text-zinc-500"
-                        >
-                            Step 4
-                        </div>
-                        <div className="mt-1 text-sm font-semibold text-white">
-                            Explain errors
+                            Review the output
                         </div>
                     </div>
                 </div>
@@ -326,16 +314,16 @@ def:pub Home() -> JsxElement {
                             >
                                 <div>
                                     <h2 className="text-lg font-semibold text-white">
-                                        Code workspace
+                                        Code
                                     </h2>
                                     <p className="mt-1 text-sm leading-6 text-zinc-400">
-                                        Edit a Jac snippet, then run a compiler action from the toolbar.
+                                        Edit a Jac snippet, then run the action you need.
                                     </p>
                                 </div>
                                 <div
                                     className="inline-flex w-fit items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-zinc-400"
                                 >
-                                    Ready for validation and formatting
+                                    Workspace
                                 </div>
                             </div>
                             <div
@@ -399,7 +387,7 @@ def:pub Home() -> JsxElement {
                                 <div
                                     className="text-xs font-medium uppercase tracking-[0.18em] text-zinc-500"
                                 >
-                                    jac editor
+                                    editor
                                 </div>
                             </div>
                             <textarea
@@ -416,7 +404,7 @@ def:pub Home() -> JsxElement {
                                 <div
                                     className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500"
                                 >
-                                    Run status
+                                    Status
                                 </div>
                                 <div className="text-xs text-zinc-400">
                                     {loading and "Processing..."}{(not loading)
@@ -447,7 +435,7 @@ def:pub Home() -> JsxElement {
                                     <div
                                         className="text-[11px] uppercase tracking-[0.18em] text-zinc-500"
                                     >
-                                        Inspector
+                                        Issue
                                     </div>
                                     <h2
                                         className="mt-1 text-lg font-semibold text-white"
@@ -458,7 +446,7 @@ def:pub Home() -> JsxElement {
                                 <div
                                     className="rounded-full border border-orange-400/20 bg-orange-500/10 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-orange-300"
                                 >
-                                    explain target
+                                    selected
                                 </div>
                             </div>
                             <div
@@ -473,7 +461,7 @@ def:pub Home() -> JsxElement {
                                 and <div
                                     className="rounded-xl border border-dashed border-white/10 bg-white/[0.03] px-4 py-6 text-sm text-zinc-500"
                                 >
-                                    Run validation to populate the first compiler error here.
+                                    Run validation to populate the first error here.
                                 </div>}
                             </div>
                         </div>
@@ -487,18 +475,18 @@ def:pub Home() -> JsxElement {
                                     <div
                                         className="text-[11px] uppercase tracking-[0.18em] text-zinc-500"
                                     >
-                                        Inspector
+                                        Result
                                     </div>
                                     <h2
                                         className="mt-1 text-lg font-semibold text-white"
                                     >
-                                        Backend response
+                                        Output
                                     </h2>
                                 </div>
                                 <div
                                     className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-400"
                                 >
-                                    raw json
+                                    json
                                 </div>
                             </div>
                             <div
